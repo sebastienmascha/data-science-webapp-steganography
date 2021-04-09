@@ -48,6 +48,10 @@ RUN poetry install --no-dev
 FROM python-base as development
 ENV FASTAPI_ENV=development
 
+# Install OpenCV deps
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+
 # Copying poetry and venv into image
 COPY --from=builder-base $POETRY_HOME $POETRY_HOME
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
