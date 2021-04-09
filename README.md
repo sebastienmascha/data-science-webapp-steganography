@@ -88,8 +88,9 @@ $ poetry shell
 
 Then run the Python App or Jupyter Lab
 ```console
+$ cd ..
 $ set -o allexport; source .env; source .env_development; set +o allexport  # To check for .env file
-$ sh ../start-reload.sh  # Python App
+$ sh start-reload.sh  # Python App
 $ jupyter lab  # Jupyter Lab
 ```
 
