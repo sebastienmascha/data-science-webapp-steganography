@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "imagerie_pkg"
+version = "0.1.0"
+description = "A Python library for higher level python functions used in image analysis and computer vision"
+authors = ["Seb Mascha Name <sebastien.mascha@gmail.com>"]
+keywords = ["ai", "ml", "computer-vision", "image"]
+readme = "README.rst"
+license = "MIT"
+homepage = "https://github.com/sebastienmascha/package_name"
+repository = "https://github.com/sebastienmascha/package_name"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+cli_command_hello = 'imagerie_pkg:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
