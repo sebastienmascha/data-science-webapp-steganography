@@ -1,0 +1,63 @@
+image: tiangolo/docker-with-compose
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+
+stages:
+  - test
+  - build
+  - deploy
+
+tests:
+  stage: test
+  script:
+    - sh ./scripts/test.sh
+  tags:
+    - build
+    - test
+    
+build-prod:
+  stage: build
+  script:
+    - TAG=prod FRONTEND_ENV=production sh ./scripts/build-push.sh
+  only:
+    - production
+  tags:
+    - build
+    - test
+
+deploy-stag:
+  stage: deploy
+  script: 
+    - >
+      DOMAIN=stag.base-project.com
+      TRAEFIK_TAG=stag.base-project.com
+      STACK_NAME=stag-base-project-com
+      TAG=stag
+      sh ./scripts/deploy.sh
+  environment:
+    name: staging
+    url: https://stag.base-project.com
+  only:
+    - master
+  tags:
+    - swarm
+    - stag
+
+deploy-prod:
+  stage: deploy
+  script:
+    - >
+      DOMAIN=base-project.com
+      TRAEFIK_TAG=base-project.com
+      STACK_NAME=base-project-com
+      TAG=prod
+      sh ./scripts/deploy.sh
+  environment:
+    name: production
+    url: https://base-project.com
+  only:
+    - production
+  tags:
+    - swarm
+    - prod

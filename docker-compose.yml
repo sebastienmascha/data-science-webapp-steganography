@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+
+  backend:       
+    container_name: python_uvicorn_fastapi_dev
+    image: smascha/python-uvicorn-fastapi:development
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+      target: development
+      args:
+        POETRY_VERSION: 1.1.5
+    env_file:
+      - ./backend/.env
+      - ./backend/.env_development
+    volumes:
+      - ./backend/app/app:/app/app
+      - ./backend/app/scripts:/app/scripts
+    ports:
+      - "80:80"
+      - "8888:8888"
+    environment:
+      - JUPYTER=jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.custom_display_url=http://127.0.0.1:8888
+    # command: 
+      # - /start-reload.sh # DEFAULT
+      # - jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.custom_display_url=http://127.0.0.1:8888
+
+  frontend:
+    build: frontend
+    depends_on:
+      - backend
+    volumes:
+        - ./storage:/storage
