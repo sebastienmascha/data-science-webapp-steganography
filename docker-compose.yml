@@ -3,7 +3,7 @@ services:
 
   backend:       
     container_name: python_uvicorn_fastapi_dev
-    image: smascha/python-uvicorn-fastapi:development
+    image: smascha/python-uvicorn-fastapi-webapp-steganography:development
     build:
       context: ./backend
       dockerfile: backend.dockerfile
