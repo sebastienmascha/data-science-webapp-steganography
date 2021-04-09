@@ -1,8 +1,18 @@
+start:
+	docker-compose pull
+	docker-compose up -d backend
+	echo  "\n\n  NOW ENTER:  jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.custom_display_url=http://127.0.0.1:8888\n\n"
+	docker-compose exec backend bash
+	
+
+stop:
+	docker-compose down
 
 build:
-	docker-compose build
+	docker-compose build backend
+
 up:
-	docker-compose up -d
+	docker-compose up -d backend 
 
 down:
 	docker-compose down
