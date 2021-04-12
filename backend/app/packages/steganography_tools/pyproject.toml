@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "imagerie_pkg"
+name = "steganography_tools"
 version = "0.1.0"
 description = "A Python library for higher level python functions used in image analysis and computer vision"
 authors = ["Seb Mascha Name <sebastien.mascha@gmail.com>"]
@@ -11,12 +11,14 @@ repository = "https://github.com/sebastienmascha/package_name"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
+numpy = "^1.20.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+opencv-python = "^4.5.1"
 
 [tool.poetry.scripts]
-cli_command_hello = 'imagerie_pkg:main'
+cli_command_hello = 'steganography_tools:main'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

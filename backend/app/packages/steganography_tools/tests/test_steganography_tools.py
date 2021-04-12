@@ -1,4 +1,4 @@
-from imagerie_pkg import __version__
+from steganography_tools import __version__
 
 
 def test_version():
