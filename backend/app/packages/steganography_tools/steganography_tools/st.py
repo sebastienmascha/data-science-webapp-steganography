@@ -23,6 +23,8 @@ __date__ = "$Date: 2021/04/01 $"
 __revision__ = "$Date: 2021/04/01 $"
 __license__ = "GPLv3"
 
+import math
+
 import numpy as np
 
 
@@ -183,3 +185,24 @@ class LSBSteganography():
         for i in range(l):
             output += bytearray([int(self.read_byte(),2)])
         return output
+
+
+class Compare():
+    def __init__(self, img1, img2):
+        self.img1 = img1
+        self.img2 = img2
+    def get_results(self):
+        print("meanSquareError: %s" %(self.meanSquareError()))
+        print("psnr: %s" %(self.psnr()))
+    def correlation(self):
+        return signal.correlate2d (self.img1, self.img2)
+    def meanSquareError(self):
+        error = np.sum((self.img1.astype('float') - self.img2.astype('float')) ** 2)
+        error /= float(self.img1.shape[0] * self.img1.shape[1]);
+        return error
+    def psnr(self):
+        mse = self.meanSquareError()
+        if mse == 0:
+            return 100
+        PIXEL_MAX = 255.0
+        return 20 * math.log10(PIXEL_MAX / math.sqrt(mse))
