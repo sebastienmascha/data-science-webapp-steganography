@@ -26,7 +26,7 @@ __license__ = "GPLv3"
 import numpy as np
 
 
-class LSBLSBSteganographyException(Exception):
+class LSBSteganographyException(Exception):
     pass
 
 
