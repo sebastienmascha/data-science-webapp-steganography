@@ -12,6 +12,7 @@ repository = "https://github.com/sebastienmascha/package_name"
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
 numpy = ">=1.18,<1.20"
+Pillow = "^8.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
