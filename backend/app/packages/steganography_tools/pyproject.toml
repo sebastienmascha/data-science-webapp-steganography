@@ -2,12 +2,12 @@
 name = "steganography_tools"
 version = "0.1.0"
 description = "A Python library for higher level python functions used in image analysis and computer vision for steganography"
-authors = ["Sebastien Mascha <sebastien.mascha@gmail.com>, Thomas Le Couedic <thomaslecouedic@hotmail.fr>"]
+authors = ["Sebastien Mascha <sebastien.mascha@gmail.com>", "Thomas Le Couedic <thomaslecouedic@hotmail.fr>"]
 keywords = ["steganography", "computer-vision", "image"]
 readme = "README.md"
 license = "MIT"
-homepage = "https://github.com/sebastienmascha/package_name"
-repository = "https://github.com/sebastienmascha/package_name"
+homepage = "https://github.com/sebastienmascha/data-science-package-steganography-tools"
+repository = "https://github.com/sebastienmascha/data-science-package-steganography-tools"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
