@@ -40,6 +40,7 @@ RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poet
 COPY ./app/pyproject.toml ./app/poetry.lock* $PYSETUP_PATH
 # We copy our Python requirements here to cache them and install only runtime deps using poetry
 RUN poetry install --no-dev
+RUN poetry show
 
 
 
@@ -57,6 +58,7 @@ COPY --from=builder-base $POETRY_HOME $POETRY_HOME
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 # venv already has runtime deps installed we get a quicker install
 RUN poetry install
+RUN poetry show
 
 # Starter scripts
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
