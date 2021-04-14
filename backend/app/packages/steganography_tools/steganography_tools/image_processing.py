@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Steganography-Tools - A Python steganography module.
-# Copyright (C) 2021 Sébastien Mascha - https://smascha.ai
+# Copyright (C) 2021 Sébastien Mascha, Thomas Le Couedic
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

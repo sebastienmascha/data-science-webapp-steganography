@@ -1,7 +1,7 @@
 start:
 	docker-compose pull
 	docker-compose up -d backend
-	echo  "\n\n  NOW ENTER:  jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.custom_display_url=http://127.0.0.1:8888\n\n"
+	echo  "\n\n  NOW ENTER:\njupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.custom_display_url=http://127.0.0.1:8888\n\n"
 	docker-compose exec backend bash
 	
 
