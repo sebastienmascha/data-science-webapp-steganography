@@ -24,12 +24,12 @@ __revision__ = "$Date: 2021/04/01 $"
 __license__ = "GPLv3"
 
 
-from PIL import Image, ExifTags
+import numpy as np
 import matplotlib.pyplot as plt
-import cv2
 import scipy
 from scipy import ndimage
-import numpy as np
+import cv2
+from PIL import Image, ExifTags
 
 def img_information(img):
     "This function allows us to get the basic information of an image."
