@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "steganography_tools"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Python library for higher level python functions used in image analysis and computer vision for steganography"
 authors = ["Sebastien Mascha <sebastien.mascha@gmail.com>", "Thomas Le Couedic <thomaslecouedic@hotmail.fr>"]
 keywords = ["steganography", "computer-vision", "image"]

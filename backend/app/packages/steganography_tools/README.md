@@ -1,8 +1,10 @@
 # Steganography Tools
 
+**Authors:** Sébastien Mascha & Thomas Le Couédic
+
 ## Installation
 
-`pip install steganography_tools`
+`pip install steganography-tools`
 
 ## References
 
@@ -14,7 +16,7 @@
 
 **Importation**
 
-`from steganography_tools import st`
+`from steganography-tools import st`
 
 **Usage**
 
@@ -47,7 +49,7 @@ compare_images.get_results()
 
 **Importation**
 
-`from steganography_tools import image_processing as st_processing`
+`from steganography-tools import image_processing as st_processing`
 
 **Usage**
 
