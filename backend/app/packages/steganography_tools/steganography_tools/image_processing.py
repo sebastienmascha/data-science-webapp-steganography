@@ -29,6 +29,7 @@ import matplotlib.pyplot as plt
 import scipy
 from scipy import ndimage
 import cv2
+import imageio
 from PIL import Image, ExifTags
 
 def img_information(img):
@@ -70,12 +71,16 @@ def rgb2grayscale(img):
     
 def plot_histogram(img):
     "Plot pixels distribution"
+    fig = plt.figure(figsize=(8, 6))
     plt.hist(img.ravel(),bins = 256, range = [0,256]) 
+    plt.title('Histogram representing pixel distribution', fontsize=25)
+    plt.xlabel('Pixel value', fontsize=20)
+    plt.ylabel('Count', fontsize=20)
     plt.show()
     
 def thresholding(img, threshold=65):
     "Black or white pixels according to a given threshold"
-    img = cv2.imread(img) 
+    img = imageio.imread(img) 
     img = img[:,:,0]
     for x in range(img.shape[0]):
         for y in range(img.shape[1]):
@@ -83,21 +88,27 @@ def thresholding(img, threshold=65):
                 img[x,y] = 255
             else:
                 img[x,y] = 0
+    
+    fig = plt.figure(figsize=(8, 6))
     plt.imshow(img, cmap=plt.cm.gray)
+    plt.title('Image displayed with a threshold for the pixels', fontsize=25)
     plt.show
     
 def display_images(img):
     "Display images with different contrasts"
-    plt.figure(figsize=(24,20))
+    fig = plt.figure(figsize=(24,20))
 
-    plt.subplot(131)
+    ax1 = fig.add_subplot(131)
+    ax1.title.set_text('Original image')
     plt.imshow(img, cmap=plt.cm.gray)
     
-    plt.subplot(132)
+    ax2 = fig.add_subplot(132)
+    ax2.title.set_text("Contrasted image : dark")
     plt.imshow(img, cmap=plt.cm.gray, vmin=10, vmax=500)
     plt.axis('off')
 
-    plt.subplot(133)
+    ax3 = fig.add_subplot(133)
+    ax3.title.set_text("Contrasted image : lightened")
     plt.imshow(img, cmap=plt.cm.gray, vmin=10, vmax=80)
     plt.axis('off')
 
@@ -105,7 +116,7 @@ def display_images(img):
 
 def image_manipulation(img):
     "Draw circles, lines into the image"
-    img = cv2.imread(img) 
+    img = imageio.imread(img) 
     img = img[:,:,0]
     
     img[100:120] = 255
@@ -115,11 +126,13 @@ def image_manipulation(img):
     mask = (X - lx / 2)**2 + (Y - ly / 2)**2 > (lx / 2)**2
     img[mask] = 0
 
-    plt.figure(figsize=(10, 8))
+    fig = plt.figure(figsize=(10, 8))
     plt.imshow(img, cmap=plt.cm.gray)
+    plt.title('Image manipulated with Numpy', fontsize=25)
     plt.axis('off')
 
     plt.show()
+    
     
 def geo_transfomation(img):
     "Data augmentation/Geometrical trasnformation : cropping, up flip, down flip, rotations"
@@ -129,21 +142,26 @@ def geo_transfomation(img):
     rotate_img = ndimage.rotate(img, 45)
     rotate_img_noreshape = ndimage.rotate(img, 45, reshape=False)
 
-    plt.figure(figsize=(12.5, 2.5))
+    fig = plt.figure(figsize=(12.5, 2.5))
 
-    plt.subplot(151)
+    ax1 = fig.add_subplot(151)
+    ax1.title.set_text('Original image')
     plt.imshow(img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(152)
+    ax2 = fig.add_subplot(152)
+    ax2.title.set_text('Image cropped')
     plt.imshow(crop_img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(153)
+    ax3 = fig.add_subplot(153)
+    ax3.title.set_text('Image flipped')
     plt.imshow(flip_ud_img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(154)
+    ax4 = fig.add_subplot(154)
+    ax4.title.set_text("Image rotated')
     plt.imshow(rotate_img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(155)
+    ax5 = fig.add_subplot(155)
+    ax5.title.set_text("Image rotated noreshape')
     plt.imshow(rotate_img_noreshape, cmap=plt.cm.gray)
     plt.axis('off')
 
@@ -158,14 +176,17 @@ def blurring(img):
     very_blurred = ndimage.gaussian_filter(img, sigma=9)
     local_mean = ndimage.uniform_filter(img, size=11)
 
-    plt.figure(figsize=(15,5))
-    plt.subplot(131)
+    fig = plt.figure(figsize=(15,5))
+    ax1 = fig.add_subplot(131)
+    ax1.title.set_text('Blurred image - Gaussian filter =3')
     plt.imshow(blurred_img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(132)
+    ax2 = fig.add_subplot(132)
+    ax2.title.set_text('Very blurred image - Gaussian filter =9')
     plt.imshow(very_blurred, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(133)
+    ax3= fig.add_subplot(133)
+    ax3.title.set_text('Image with uniform filter')             
     plt.imshow(local_mean, cmap=plt.cm.gray)
     plt.axis('off')
 
@@ -182,15 +203,18 @@ def sharpenning(img,alpha=30):
 
     sharpened = blurred_img + alpha * (blurred_img - filter_blurred_img)
 
-    plt.figure(figsize=(18, 6))
+    fig = plt.figure(figsize=(18, 6))
  
-    plt.subplot(131)
+    ax1 = fig.add_subplot(131)
+    ax1.title.set_text('Original image')
     plt.imshow(img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(132)
+    ax2 = fig.add_subplot(132)
+    ax2.title.set_text('Blurred image - Gaussian filter =3')
     plt.imshow(blurred_img, cmap=plt.cm.gray)
     plt.axis('off')
-    plt.subplot(133)
+    ax3 = fig.add_subplot(133)
+    ax3.title.set_text('Blurred image sharpenned')
     plt.imshow(sharpened, cmap=plt.cm.gray)
     plt.axis('off')
 
