@@ -32,3 +32,5 @@ services:
       - backend
     volumes:
         - ./storage:/storage
+    ports:
+      - "8501:8501"

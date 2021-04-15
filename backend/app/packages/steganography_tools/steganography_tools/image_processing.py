@@ -157,11 +157,11 @@ def geo_transfomation(img):
     plt.imshow(flip_ud_img, cmap=plt.cm.gray)
     plt.axis('off')
     ax4 = fig.add_subplot(154)
-    ax4.title.set_text("Image rotated')
+    ax4.title.set_text('Image rotated')
     plt.imshow(rotate_img, cmap=plt.cm.gray)
     plt.axis('off')
     ax5 = fig.add_subplot(155)
-    ax5.title.set_text("Image rotated noreshape')
+    ax5.title.set_text('Image rotated noreshape')
     plt.imshow(rotate_img_noreshape, cmap=plt.cm.gray)
     plt.axis('off')
 
@@ -201,7 +201,7 @@ def sharpenning(img,alpha=30):
 
     filter_blurred_img = ndimage.gaussian_filter(blurred_img, 1)
 
-    sharpened = blurred_img + alpha * (blurred_img - filter_blurred_img)
+    sharpened = blurred_img + alpha * (blurred_img - filter_blurred_img)  
 
     fig = plt.figure(figsize=(18, 6))
  
