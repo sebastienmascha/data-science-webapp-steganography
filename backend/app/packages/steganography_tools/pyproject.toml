@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "steganography_tools"
-version = "0.1.3"
+version = "0.1.5"
 description = "A Python library for higher level python functions used in image analysis and computer vision for steganography"
 authors = ["Sebastien Mascha <sebastien.mascha@gmail.com>", "Thomas Le Couedic <thomaslecouedic@hotmail.fr>"]
-keywords = ["steganography", "computer-vision", "image"]
+keywords = ["steganography", "computer-vision", "image", "encoding"]
 readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/sebastienmascha/data-science-package-steganography-tools"
@@ -13,6 +13,7 @@ repository = "https://github.com/sebastienmascha/data-science-package-steganogra
 python = ">=3.7,<4.0"
 numpy = ">=1.18,<1.20"
 Pillow = "^8.2.0"
+pycryptodome = "^3.10.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
